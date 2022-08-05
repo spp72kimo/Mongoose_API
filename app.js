@@ -33,12 +33,12 @@ app.get("/comment", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.post("/comment", (req, res) => {
+app.post("/comment", (req, res, next) => {
   const data = req.body;
   new Comment({ ...data })
     .save()
     .then(() => {
-      res.json({
+      res.status(200).json({
         ...data,
         saveStatus: "True",
       });
