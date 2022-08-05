@@ -6,13 +6,12 @@ const commentSchema = mongoose.Schema({
   },
   author: {
     type: String,
-    require,
-    minlength: 5,
+    required: true,
     maxlength: 15,
   },
   content: {
     type: String,
-    require,
+    required: true,
     maxlength: 100,
   },
   updated: {
