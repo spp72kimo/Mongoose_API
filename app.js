@@ -36,9 +36,7 @@ app.get("/comment", (req, res) => {
 });
 
 app.post("/comment", (req, res, next) => {
-  res.json({
-    message: "test post route.",
-  });
+  res.redirect("/");
   // const data = req.body;
   // new Comment({ ...data })
   //   .save()
