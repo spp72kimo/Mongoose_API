@@ -21,7 +21,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("hello!!");
+  res.json({
+    message: "This is json response.",
+  });
 });
 
 app.get("/comment", (req, res) => {
