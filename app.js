@@ -49,7 +49,7 @@ app.post("/comment", (req, res) => {
       res.json({
         ...data,
         saveStatus: "False",
-        errorMessage: err,
+        errorMessage: err.message,
       });
     });
 });
