@@ -56,8 +56,7 @@ app.post("/comment", (req, res) => {
 
 app.delete("/comment/:id", (req, res) => {
   const id = req.params.id;
-  console.log(id);
-  Comment.deleteOne({ id }).then((results) => {
+  Comment.deleteOne({ _id: id }).then((results) => {
     res.json(results);
   });
 });
