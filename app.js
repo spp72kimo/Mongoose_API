@@ -2,7 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const Comment = require("./models/comment");
 const bodyParser = require("body-parser");
-// const cors = require("cors");
+const cors = require("cors");
 const express = require("express");
 const app = new express();
 const port = 3333;
@@ -16,7 +16,7 @@ mongoose
     console.log(err);
   });
 
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
