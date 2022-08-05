@@ -35,8 +35,9 @@ app.get("/comment", (req, res) => {
 
 app.post("/comment", (req, res) => {
   const data = JSON.parse(req.body);
-  res.send("get data");
+  res.send(data);
   res.set("Access-Control-Allow-Origin", "*");
+  res.set("Content-Type", "application/json");
   res.send(data);
 });
 
