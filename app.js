@@ -54,6 +54,13 @@ app.post("/comment", (req, res) => {
     });
 });
 
+app.delete("/comment/:id", (req, res) => {
+  const id = req.params("id");
+  Comment.deleteOne({ id }).then((results) => {
+    res.json(results);
+  });
+});
+
 app.listen(port, () => {
   console.log("Server is running on port: ", port);
 });
