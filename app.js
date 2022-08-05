@@ -34,8 +34,8 @@ app.get("/comment", (req, res) => {
 });
 
 app.post("/comment", (req, res) => {
-  const data = req.body;
-  console.log(data);
+  const data = JSON.parse(req.body);
+  res.send("get data");
   res.set("Access-Control-Allow-Origin", "*");
   res.send(data);
 });
