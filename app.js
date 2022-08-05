@@ -35,6 +35,17 @@ app.get("/comment", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.get("/comment/:id", (req, res) => {
+  const _id = req.params.id;
+  Comment.findOne({ _id })
+    .then((data) => data.json())
+    .then((data) => {
+      res.set("Content-Type", "application/json");
+      res.send(data);
+    })
+    .catch((err) => res.json({ errorMessage: err }));
+});
+
 app.post("/comment", (req, res) => {
   const data = req.body;
   new Comment({ ...data })
