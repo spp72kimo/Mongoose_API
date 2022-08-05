@@ -36,22 +36,25 @@ app.get("/comment", (req, res) => {
 });
 
 app.post("/comment", (req, res, next) => {
-  const data = req.body;
-  new Comment({ ...data })
-    .save()
-    .then(() => {
-      res.status(200).json({
-        ...data,
-        saveStatus: "True",
-      });
-    })
-    .catch((err) => {
-      res.json({
-        ...data,
-        saveStatus: "False",
-        errorMessage: err,
-      });
-    });
+  res.json({
+    message: "test post route.",
+  });
+  // const data = req.body;
+  // new Comment({ ...data })
+  //   .save()
+  //   .then(() => {
+  //     res.status(200).json({
+  //       ...data,
+  //       saveStatus: "True",
+  //     });
+  //   })
+  //   .catch((err) => {
+  //     res.json({
+  //       ...data,
+  //       saveStatus: "False",
+  //       errorMessage: err,
+  //     });
+  //   });
 });
 
 app.listen(port, () => {
