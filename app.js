@@ -17,7 +17,6 @@ mongoose
   });
 
 app.use(cors());
-app.options("*", cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -36,24 +35,23 @@ app.get("/comment", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.post("/comment", (req, res, next) => {
-  res.redirect("/");
-  // const data = req.body;
-  // new Comment({ ...data })
-  //   .save()
-  //   .then(() => {
-  //     res.status(200).json({
-  //       ...data,
-  //       saveStatus: "True",
-  //     });
-  //   })
-  //   .catch((err) => {
-  //     res.json({
-  //       ...data,
-  //       saveStatus: "False",
-  //       errorMessage: err,
-  //     });
-  //   });
+app.post("/comment", (req, res) => {
+  const data = req.body;
+  new Comment({ ...data })
+    .save()
+    .then(() => {
+      res.status(200).json({
+        ...data,
+        saveStatus: "True",
+      });
+    })
+    .catch((err) => {
+      res.json({
+        ...data,
+        saveStatus: "False",
+        errorMessage: err,
+      });
+    });
 });
 
 app.listen(port, () => {
