@@ -15,8 +15,8 @@ const commentSchema = mongoose.Schema({
     maxlength: 100,
   },
   updated: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    required: true,
   },
 });
 
