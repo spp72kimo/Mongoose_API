@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello!");
+  res.send("hello!!");
 });
 
 app.get("/comment", (req, res) => {
@@ -34,7 +34,8 @@ app.get("/comment", (req, res) => {
 app.post("/comment", (req, res) => {
   const data = req.body;
   console.log(data);
-  res.send("get data");
+  res.set("Access-Control-Allow-Origin", "*");
+  res.send(data);
 });
 
 app.listen(port, () => {
