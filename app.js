@@ -35,8 +35,21 @@ app.get("/comment", (req, res) => {
 
 app.post("/comment", (req, res) => {
   const data = req.body;
-  console.log(data);
-  res.send(JSON.stringify(data));
+  new Comment({ ...data })
+    .save()
+    .then(() => {
+      res.json({
+        ...data,
+        saveStatus: "True",
+      });
+    })
+    .catch((err) => {
+      res.json({
+        ...data,
+        saveStatus: "False",
+        errorMessage: err,
+      });
+    });
 });
 
 app.listen(port, () => {
